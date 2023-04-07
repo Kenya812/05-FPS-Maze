@@ -1,0 +1,86 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Materials/Grass001_1K_AmbientOcclusion.jpg" type="Texture" id=1]
+[ext_resource path="res://Materials/Grass001_1K_NormalGL.jpg" type="Texture" id=2]
+[ext_resource path="res://Materials/Grass001_1K_Color.jpg" type="Texture" id=3]
+[ext_resource path="res://Materials/Grass001_1K_Roughness.jpg" type="Texture" id=4]
+[ext_resource path="res://Materials/Grass001_1K_Displacement.jpg" type="Texture" id=5]
+[ext_resource path="res://Materials/Tiles093_1K_AmbientOcclusion.jpg" type="Texture" id=6]
+[ext_resource path="res://Materials/Tiles093_1K_Roughness.jpg" type="Texture" id=7]
+[ext_resource path="res://Materials/Tiles093_1K_NormalDX.jpg" type="Texture" id=8]
+[ext_resource path="res://Materials/Tiles093_1K_Color.jpg" type="Texture" id=9]
+[ext_resource path="res://Materials/Tiles093_1K_Displacement.jpg" type="Texture" id=10]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 9 )
+roughness_texture = ExtResource( 7 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 8 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 6 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 10 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 3 )
+roughness_texture = ExtResource( 4 )
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 1 )
+ao_on_uv2 = false
+ao_texture_channel = 4
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 5 )
+
+[node name="Tile14" type="Spatial"]
+
+[node name="Ground" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 3 )
+
+[node name="South" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1 )
+use_collision = true
+height = 3.0
+depth = 0.1
+material = SubResource( 4 )
+
+[node name="West" type="CSGBox" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1.5, 0 )
+use_collision = true
+height = 3.0
+depth = 0.1
+material = SubResource( 4 )
+
+[node name="East" type="CSGBox" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1.5, 0 )
+use_collision = true
+height = 3.0
+depth = 0.1
+material = SubResource( 4 )
