@@ -43,6 +43,27 @@ omni_attenuation = 2.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647671, 0 )
 shape = SubResource( 6 )
 
+[node name="Light" type="OmniLight" parent="Maze"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933479, 2.54063, 1.52202 )
+light_color = Color( 0.564706, 0.843137, 0.376471, 1 )
+light_energy = 10.0
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="Light2" type="OmniLight" parent="Maze"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.9318, 3.93944, -79.598 )
+light_color = Color( 0.294118, 0.52549, 0.792157, 1 )
+light_energy = 10.0
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="Light3" type="OmniLight" parent="Maze"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78.9675, 0.892242, 0.937014 )
+light_color = Color( 0.929412, 0.909804, 0.431373, 1 )
+light_energy = 10.0
+omni_range = 3.0
+omni_attenuation = 2.0
+
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 43.9202, 0, -79.4644 )
 
@@ -78,8 +99,5 @@ volume_db = 3.0
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Menu" parent="UI" instance=ExtResource( 4 )]
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 40, 50, 20 )
 
 [connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]
